@@ -40,6 +40,7 @@ if [ -z "$target_api_secret" ]
         exit
 fi
 
+cd ..
 # Deploy core AWS infrastructure
 echo Deploying $focusmark_productname into the $deployed_environment environment.
 
@@ -72,7 +73,7 @@ sh deploy.sh
 
 cd ..
 echo Fetching the Task Micro-Service API
-git clone https://github.com/focusmark/api-project.git
+git clone https://github.com/focusmark/api-task.git
 cd api-task
 echo Executing the Task Serverless deployment
 sh deploy.sh
