@@ -12,34 +12,6 @@ if [ -z "$focusmark_productname" ]
         exit
 fi
 
-if [ -z "$target_domain" ]
-    then 
-        echo "\$target_domain environment variable is unset!"
-        echo "Aborting deployment."
-        exit
-fi
-
-if [ -z "$target_api_url" ]
-    then 
-        echo "\$target_api_url environment variable is unset!"
-        echo "Aborting deployment."
-        exit
-fi
-
-if [ -z "$target_api_key" ]
-    then 
-        echo "\$target_api_key environment variable is unset!"
-        echo "Aborting deployment."
-        exit
-fi
-
-if [ -z "$target_api_secret" ]
-    then 
-        echo "\$target_api_secret environment variable is unset!"
-        echo "Aborting deployment."
-        exit
-fi
-
 cd ..
 # Deploy core AWS infrastructure
 echo Deploying $focusmark_productname into the $deployed_environment environment.
@@ -52,16 +24,9 @@ sh deploy.sh
 
 cd ..
 echo Fetching the authorization infrastructure
-git clone https://github.com/focusmark/auth-infrastructure.git
+git clone https://github.com/focusmark/aws-authentication.git
 cd auth-infrastructure
 echo Executing the Auth Infrastructure deployment
-sh deploy.sh
-
-cd ..
-echo Fetching the API infrastructure
-git clone https://github.com/focusmark/api-infrastructure.git
-cd api-infrastructure
-echo Executing the API Infrastructure deployment
 sh deploy.sh
 
 cd ..
