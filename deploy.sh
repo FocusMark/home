@@ -25,7 +25,7 @@ sh deploy.sh
 cd ..
 echo Fetching the authorization infrastructure
 git clone https://github.com/focusmark/aws-authentication.git
-cd auth-infrastructure
+cd aws-authentication
 echo Executing the Auth Infrastructure deployment
 sh deploy.sh
 
